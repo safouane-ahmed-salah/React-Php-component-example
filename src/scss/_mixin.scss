@@ -1,0 +1,12 @@
+@mixin noBorder {
+    border: 0;
+    &:focus {
+        outline: 0;
+    }
+}
+
+@mixin appBarDropdown {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}

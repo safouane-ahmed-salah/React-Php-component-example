@@ -1,0 +1,246 @@
+@import "variables";
+@import "mixin";
+@import "~bootstrap/scss/bootstrap";
+body {
+    margin: 0;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    .App {
+        .text-themecolor{
+            color: $primaryColor;
+        }
+        position: relative;
+        z-index: 50;
+        .page-titles {
+            background: #ffffff;
+            margin: 0 -30px 30px;
+            padding: 15px;
+            -webkit-box-shadow: 1px 0 5px #ccc;
+            box-shadow: 1px 0 5px  #ccc}
+        .btn{font-weight: 500;}
+        input[type="radio"]{
+            -ms-transform: scale(1.4); /* IE */
+            -moz-transform: scale(1.4); /* FF */
+            -webkit-transform: scale(1.4); /* Safari and Chrome */
+            -o-transform: scale(1.4); 
+        }
+       input[type="checkbox"]{
+            -ms-transform: scale(1.4); /* IE */
+            -moz-transform: scale(1.4); /* FF */
+            -webkit-transform: scale(1.4); /* Safari and Chrome */
+            -o-transform: scale(1.4); 
+            margin-top: 9px;
+        }
+        .innovation-wrapper {
+            .card {
+                textarea {
+                    height: 350px;
+                }
+            }
+        }
+        .sidebar {
+            width: 240px;
+            position: fixed;
+            top: 0;
+            height: 100%;
+            padding: 39px 0;
+            //  box-shadow: 0px 3px 10px 0 rgb(119 119 119 / 10%); 
+            background-color: #f6f4f2;
+            padding-top: 47px;
+            z-index: 20;
+            padding-left: 25px;
+            padding-right: 25px;
+            box-shadow: 1px 0px 20px  #f6f4f2;
+            background: #fff;
+            .logo {
+                text-align: center;
+                margin-bottom: 16px;
+                img {
+                    width: 103px;
+                }
+            }
+            .nav-list {
+                list-style: none;
+                padding: 10px 0;
+                img{
+                    width: 15px;
+                }
+                a {
+                    padding: 8px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    text-decoration: none;
+                    color: #000;
+                    border-radius: 5px;
+                        color: #607d8b;
+                padding: 8px 15px 8px 15px;
+                font-size: 14px;
+                                &.active {
+                        background-color: $primaryColor;
+                        color: #fff;
+                        img {
+                            filter: invert(92%) sepia(100%) saturate(0%) hue-rotate(284deg) brightness(102%) contrast(101%);
+                        }
+                    }
+                }
+            }
+        }
+        .appbar {
+            width: 100%;
+            // height: 102px;
+            background-color: #fff;
+            position: fixed;
+            top:0;
+            box-shadow: 5px 0px 10px #ccc;
+            z-index: 555;
+            justify-content: space-between;
+            padding: 0px;
+            .form-control{
+                width: 300px;
+            }
+            .navbar-light .navbar-brand{
+                padding: 0px 32px;
+            }
+            .bg-light{
+                background-color:#fff !important;
+            }
+            .appbar-right {
+                display: flex;
+                align-items: center;
+                #user-name-dropdown {
+                    @include appBarDropdown;
+                    color: $primaryColor;
+                }
+            }
+        }
+        .content {
+            background-color: $bgColor;
+            width: 100%;
+            min-height: 100vh;
+            margin-left: 240px;
+            padding-top: 56px;
+            text-align: left;
+          
+            .main {
+                &.admin-main{
+                    padding: 30px;
+                }
+                color: #252525;
+                div[class*="col-"] .card {
+                    height: 100%;
+                }
+                .main-table-wrap {
+                    table {
+                        background-color: #fff;
+                        border-radius: 4px;
+                        box-shadow: 0px -3px 10px 0 rgba(119, 119, 119, 0.1);
+                        th {
+                            border-bottom: 4px solid $primaryColor;
+                        }
+                        a {
+                            color: #0d9edf;
+                        }
+                    }
+                    .table-size input {
+                        margin-left: 10px;
+                        @include noBorder;
+                        &::-webkit-inner-spin-button {
+                            opacity: 1;
+                        }
+                    }
+                }
+                .dash-box {
+                    border-radius: 5px;
+                    box-shadow: 0 0 43px 0 #ebebeb;
+                    .box-body>* {
+                        margin: 10px 0;
+                    }
+                }
+                .status-box {
+                    color: #fff;
+                    border-radius: 13px;
+                    box-shadow: 2.1px 5.6px 10px 0 rgba(0, 0, 0, 0.2);
+                    padding: 20px 10px;
+                    font-family: 'Lato', sans-serif;
+                    position: relative;
+                    &::after {
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        background: url('../assets/vector.png') no-repeat;
+                        background-position: right;
+                    }
+                    .status-number {
+                        font-size: 25.5px;
+                        font-weight: bold;
+                    }
+                    .status-name {
+                        font-size: 17.5px;
+                    }
+                }
+                .image-uploader {
+                    .img-delete {
+                        opacity: 0;
+                        position: absolute;
+                        top: 0;
+                        display: flex;
+                        width: 100%;
+                        height: 100%;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: rgba(0, 0, 0, 0.2);
+                    }
+                    .image-wrap {
+                        margin: 10px 0;
+                        img {
+                            height: 150px;
+                            width: 100%;
+                            object-fit: contain;
+                        }
+                        &:hover .img-delete {
+                            opacity: 1;
+                        }
+                    }
+                }
+                .search-field {
+                    margin-right: 20px;
+                    span {
+                        display: inline-block;
+                        background-color: #fff;
+                        border-radius: 4px;
+                        margin-left: 5px;
+                        padding: 5px;
+                        input {
+                            background-color: transparent;
+                            @include noBorder;
+                        }
+                    }
+                }
+                label.trl-field {
+                    margin-right: 20px;
+                    input,
+                    select {
+                        border-radius: 4px;
+                        margin-left: 5px;
+                        padding: 7px;
+                        min-width: 150px;
+                        @include noBorder;
+                    }
+                }
+            }
+        }
+    }
+}
+.user-main{
+    .col-md-3:last-child{
+        padding-right: 15px !important;
+    }
+    .card--holder--user--dashboard{border:1px solid #bbb}
+}

@@ -1,0 +1,9 @@
+$primaryColor:#ffb22b;
+$bgColor:#e7e7e7;
+$whiteFilter: invert(41%) sepia(41%) saturate(6158%) hue-rotate(326deg) brightness(89%) contrast(71%);
+:export {
+    primaryColor: $primaryColor;
+    bgColor: $bgColor;
+}
+
+$theme-colors: ( "primary": $primaryColor, );
