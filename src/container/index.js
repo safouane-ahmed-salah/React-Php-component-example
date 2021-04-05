@@ -29,6 +29,7 @@ export function SideBar(){
                     <img src={v.icon} />
                     {v.name}
                 </NavLink>
+                
             </li> )}
         </ul>
     </div>
@@ -42,7 +43,7 @@ export function AppBar(){
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-            <Form.Group className='mb-0'>
+            <Form.Group className='mb-0 ml-4'>
             <Form.Control as="select" size="md">
                 <option>IT Team</option>
             </Form.Control>
