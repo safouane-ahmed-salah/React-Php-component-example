@@ -7,7 +7,7 @@ import FormControl  from "react-bootstrap/FormControl";
 import { Container , Row , Col , Card, Button, Form  } from "react-bootstrap";
 import { routes, menus } from './routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Dashboard } from "./views";
+import { Campaign, Dashboard } from "./views";
 import { EnquiryDashBoard } from "./views/EnquiryDashboard";
 
 const logo = 'http://enkuire.com/assets/images/EnkuireLogo.png';
@@ -49,7 +49,7 @@ export function AppBar(){
             </Form.Control>
             </Form.Group>
             </Nav>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+            <NavDropdown title="Dropdown"  menuAlign="left" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
@@ -66,10 +66,11 @@ export function AppBar(){
 
 
 function Main(){
-    const routes = [
-        {path: '/', exact:true, component: Dashboard  },
-        {path: '/enquiry-dashBoard', exact:true, component: EnquiryDashBoard  },
-    ];
+    // const routes = [
+    //     {path: '/', exact:true, component: Dashboard  },
+    //     {path: '/enquiry-dashBoard', exact:true, component: EnquiryDashBoard  },
+    //     {path: '/campaign', exact:true, component: Campaign  },
+    // ];
     return (<div className="main">
         {routes.map(function (v, i) {
                 return <Route {...v} />;

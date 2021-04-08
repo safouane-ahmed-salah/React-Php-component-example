@@ -17,10 +17,16 @@ body {
         font-weight: 400;
     }
     .App {
+        width: 100%;
+        overflow: hidden;
         .text-themecolor{
             color: $primaryColor;
         }
         .card{
+            h2{
+                font-size: 21px;
+                color: #455a64;
+            }
             border-color: #d7dfe3;
             box-shadow: 0px 5px 20px #e2e2e2;
             .card-footer{
@@ -213,6 +219,23 @@ body {
                         @include noBorder;
                         &::-webkit-inner-spin-button {
                             opacity: 1;
+                        }
+                    }
+                }
+                .main-table-wrap.inner-table-wrap{
+                    .table{
+                        tr{
+                            th{
+                                border:none;
+                                color: #67757c;
+                                padding-top: 30px;
+                                font-weight: 500;
+                            }
+                            td{
+                                border-color: #f3f1f1;
+                                color: #67757c;
+                                font-weight: 400;
+                            }
                         }
                     }
                 }

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import Skeleton from 'react-loading-skeleton';
-import {Card, Row, Col} from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
+
+
 
 export function MainTable({columns = [], action = '', defaultSize=10,  className=''}){
     const [resp, setResp] = useState({total:0, data: []});
@@ -62,6 +63,42 @@ export function MainTable({columns = [], action = '', defaultSize=10,  className
             />
         }
     </div>
+    </div>
+}
+
+
+export function InnerTable({columns = [], action = '', defaultSize=10,  className=''}){
+    const [resp, setResp] = useState({total:0, data: []});
+    const [page, setPage] = useState(1);
+    const [size, setSize] = useState(defaultSize);
+    const [loading, setLoading] = useState(true);
+    const {total = 0, data= []} = resp;
+
+    useEffect(() => {
+        setLoading(true)
+        setTimeout(getResponse, 2000);
+        function getResponse(){
+            setResp({data:Array(size).fill(0).map(() => columns.map(()=> 'Rendom Test' )), total: 100});
+            setLoading(false);
+        }
+    }, [page, size]);
+
+    return <div className={"main-table-wrap inner-table-wrap " + className }>
+      
+      <table className="table   table-hover table-bordered">
+      <thead><tr>{columns && columns.map((v,i) => <th key={i}>{v.name}</th> )}</tr></thead>
+      <tbody>
+        {loading ? Array(size).fill(0).map((r,i)=> <tr key={i}>{columns.map((v,j) =><td key={j}><Skeleton /></td> )}</tr> ) :
+            data.map((r,i)=> <tr key={i}>
+                {columns.map((v,j) =>{ 
+                var val = r[v.key] || null; 
+                var { path, key} = v.route || {};
+                return <td key={j}>{v.component ? v.component(val,r,v.key) : 
+                    (path && key ? <Link to={{ pathname: path + (r[key] || ''), state: r }} >{val}</Link> : val )}</td> 
+                }) } </tr>)}
+      </tbody>
+    </table>
+ 
     </div>
 }
 
