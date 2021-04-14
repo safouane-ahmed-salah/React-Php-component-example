@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import Skeleton from 'react-loading-skeleton';
+import {  Form , InputGroup, FormControl } from 'react-bootstrap';
 import { Row, Col} from 'react-bootstrap';
+import DateRangePicker from 'react-bootstrap-daterangepicker';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-daterangepicker/daterangepicker.css';
 
 
 
@@ -99,6 +103,18 @@ export function InnerTable({columns = [], action = '', defaultSize=10,  classNam
       </tbody>
     </table>
  
+    </div>
+}
+
+export function DateRange(props){
+    return <div>
+        <DateRangePicker
+          initialSettings={{ startDate: '01/01/2020', endDate: '01/15/2020' }}
+
+        >
+            <input type="text" className="form-control" />
+    
+        </DateRangePicker>
     </div>
 }
 

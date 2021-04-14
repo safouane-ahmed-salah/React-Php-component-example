@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { Container , Row , Col , Form, Card, Button } from 'react-bootstrap';
 import { dashboardBoxes , progressCategories     } from '../../constants';
+import { DateRange } from '../../utils';
 import './index.scss';
 export class Dashboard extends Component {
+    columns = [
+        {name: 'Assignee', key: 0, },
+        {name: 'Lead Name	', key: 1, },
+        {name: 'Status', key: 2, },
+        {name: 'Campaign', key: 3, },
+        {name: 'Submission Date', key: 4, },
+
+    ];
     render(){
         return (
             <Container fluid className="dashboard--holder">
@@ -28,6 +37,13 @@ export class Dashboard extends Component {
                             <option>Default select</option>
                         </Form.Control>
                     </Form.Group>
+                    </Col>
+                    <Col md={4}>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Date Range:</Form.Label>
+                        <DateRange/>
+                    </Form.Group>
+                       
                     </Col>
                     </Row>
                     </Form>

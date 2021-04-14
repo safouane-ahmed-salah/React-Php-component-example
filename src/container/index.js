@@ -1,37 +1,34 @@
 import  React  from "react";
-import { NavLink, Route } from 'react-router-dom';
+import {  Route } from 'react-router-dom';
 import  Navbar  from "react-bootstrap/Navbar";
 import  Nav  from "react-bootstrap/Nav";
 import  NavDropdown   from "react-bootstrap/NavDropdown";
-import FormControl  from "react-bootstrap/FormControl";
-import { Container , Row , Col , Card, Button, Form  } from "react-bootstrap";
+import {  Form, Button  } from "react-bootstrap";
 import { routes, menus } from './routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Campaign, Dashboard } from "./views";
-import { EnquiryDashBoard } from "./views/EnquiryDashboard";
+
+import MetisMenu from 'react-metismenu';
+import 'font-awesome/css/font-awesome.min.css';
+
+import 'react-metismenu/dist/react-metismenu-standart.min.css';
 
 const logo = 'http://enkuire.com/assets/images/EnkuireLogo.png';
 export function MainHolder(){
     return <div className="content">
-       
-        <Main />
-
-</div>
+                <Main />
+                <footer class="footer">
+                                        © Copyright 2020. All right reserved
+            </footer>
+            </div>
 }
 export function SideBar(){
     return <div className="sidebar">
         <div className="logo">
             {/* <Link to="/"><img src={logo} /></Link> */}
         </div>
-        <ul className="nav-list">
-            {menus.map((v,i) => <li key={i}>
-                <NavLink exact={v.path=='/'} activeClassName='active' to={v.path}>
-                    <img src={v.icon} />
-                    {v.name}
-                </NavLink>
-                
-            </li> )}
-        </ul>
+
+        <MetisMenu content={menus} activeLinkFromLocation />,
+    
     </div>
 }
 export function AppBar(){
@@ -49,12 +46,13 @@ export function AppBar(){
             </Form.Control>
             </Form.Group>
             </Nav>
-            <NavDropdown title="Dropdown"  menuAlign="left" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            <NavDropdown title="F" className='header--dropdown' menuAlign="right" id="basic-nav-dropdown">
+            <NavDropdown.Item href="#">Farhat</NavDropdown.Item>
+            <NavDropdown.Item href="#">Farhatbaig77@gmail.com</NavDropdown.Item>
+            <NavDropdown.Item href="#"><Button type='primary' size='sm'>View Profile</Button></NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            <NavDropdown.Item href="#">My Profile</NavDropdown.Item>
+            <NavDropdown.Item href="#">Logout</NavDropdown.Item>
         </NavDropdown>
         </Navbar.Collapse>
         </Navbar>

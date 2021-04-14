@@ -21,13 +21,54 @@ export const routes =
 
 ];
 
-export const menus = 
-[
-    {icon: dashoboardIcon, name: 'Overview', path: '/'},
-    {icon: dashoboardIcon, name: 'Enquiry Dashboard', path: '/enquiry-dashboard'},
-    {icon: dashoboardIcon, name: 'Campaign', path: '/campaigns'},
-    {icon: dashoboardIcon, name: 'Status', path: '/status'},
-    {icon: dashoboardIcon, name: 'Source', path: '/source'},
-    {icon: dashoboardIcon, name: 'Location', path: '/location'},
-    {icon: dashoboardIcon, name: 'Device', path: '/device'},
+export const menus=[
+    {
+        // icon: 'caret-left',
+        label: 'Overview',
+        to: '/',
+    },
+    {
+        // icon: 'caret-left',
+        label: 'Enquiry Dashboard',
+        to: '/#enquiry-dashboard',
+    },
+    {
+        // icon: 'caret-left',
+        label: 'Reports',
+        content: [
+            {
+                // icon: 'caret-left',
+                label: 'Enquiry',
+                content: [
+                    {
+                        // icon: 'caret-left',
+                        label: 'Campaign',
+                        to: '/#campaigns',
+                    },
+                    {
+                        // icon: 'caret-left',
+                        label: 'Status',
+                        to: '/#status',
+                    },
+                    {
+                        // icon: 'caret-left',
+                        label: 'Source',
+                        to: '/#source',
+                    },
+                    {
+                        // icon: 'caret-left',
+                        label: 'Location',
+                        to: '/#location',
+                    },
+                    {
+                        // icon: 'caret-left',
+                        label: 'Device',
+                        to: '/#device',
+                    },
+                ],
+            },
+        ],
+    },
 ];
+
+
