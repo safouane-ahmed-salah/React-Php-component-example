@@ -10,7 +10,6 @@ export class EnquiryDashBoard extends Component{
         {name: 'Status', key: 2, },
         {name: 'Campaign', key: 3, },
         {name: 'Submission Date', key: 4, },
-
     ];
 
     render(){

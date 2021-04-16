@@ -26,7 +26,7 @@ export function MainTable({columns = [], action = '', defaultSize=10,  className
             <Col  md='6'>
             <div>
                 show 
-                <input type="number" value={size} onChange={e=> setSize(parseInt(e.target.value))} />
+                <input type="number" min={5} value={size} onChange={e=> e.target.value && setSize(parseInt(e.target.value))} />
             </div>  
             </Col>
             <Col className='float-right text-right' md='6'><SearchField onChange={e=> this.setState({search: e.target.value})} /></Col>
