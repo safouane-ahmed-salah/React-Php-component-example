@@ -21,7 +21,7 @@ export function MainTable({columns = [], action = '', defaultSize=10,  className
         setLoading(true)
         setTimeout(getResponse, 2000);
         function getResponse(){
-            setResp({data:Array(size).fill(0).map(() => columns.map(()=> 'Rendom Test' )), total: 100});
+            setResp({data:Array(size).fill(0).map(() => columns.map(()=> 'Rendom' )), total: 100});
             setLoading(false);
         }
     }, [page, size]);
@@ -82,7 +82,7 @@ export function InnerTable({columns = [], action = '', defaultSize=10,  classNam
         setLoading(true)
         setTimeout(getResponse, 2000);
         function getResponse(){
-            setResp({data:Array(size).fill(0).map(() => columns.map(()=> 'Rendom Test' )), total: 100});
+            setResp({data:Array(size).fill(0).map(() => columns.map(()=> 'Rendom' )), total: 100});
             setLoading(false);
         }
     }, [page, size]);
