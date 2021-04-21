@@ -1,6 +1,8 @@
 @import "variables";
 @import "mixin";
 @import "~bootstrap/scss/bootstrap";
+@import '~react-pro-sidebar/dist/scss/styles.scss';
+
 body {
     margin: 0;
     font-weight: 500;
@@ -17,10 +19,124 @@ body {
         font-weight: 400;
     }
     .App {
+        .footer{
+            background-color: #fff;
+            border-top: 1px solid rgba(120, 130, 140, 0.13);
+            color: #67757c;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            top:auto;
+            width: 100%;
+            text-align: center;
+        }
+        .navbar{
+            .dropdown-menu {
+                right: 0;
+                left: auto;
+                .btn{
+                    color: #fff;
+                    border-radius: 20px;
+                    font-size: 13px;
+                }
+            }
+        }
+        .header--dropdown{
+            width: 45px;
+            height: 45px;
+            border-radius: 100%;
+            background: #1e88e5;
+            color: #ffffff;
+            .dropdown-toggle::after{display: none;}
+            .nav-link{
+                display: block;
+                    text-align: center;
+                    color: #fff;
+                line-height: 45px;
+                font-size: 19px;
+                font-weight: 400;
+                padding: 0;
+            }
+        }
+        .metismenu{
+            margin-top: 30px;
+            padding-left: 10px;
+            text-align: left;
+            &::after{
+                box-shadow: none;
+            }
+          
+            background: transparent;
+            .metismenu-container .metismenu-container{
+                box-shadow: none;
+            }
+            .metismenu-container.visible{
+                // padding: 0;
+            }
+            .metismenu-link{
+                text-shadow: none;
+                color: #607d8b;
+                font-weight: 300;
+                padding: 0px 0 0px 15px;
+                &:hover{
+                    text-decoration: none;
+                }
+                I.metismenu-icon{display: none;}
+            }
+            .metismenu-link.active{
+                background-color: #ffb22b;
+                color: #fff;
+                border-radius: 4px;
+                box-shadow: 0 0 10px #ccc;
+                font-weight: 500;
+            }
+
+            .metismenu-item{
+                margin-bottom: .5em ;
+                .has-active-child{
+                    background-color: #ffb22b;
+                    color: #fff;
+                    border-radius: 4px;
+                    box-shadow: 0 0 10px #ccc;
+                    font-weight: 500;
+                    }
+                    .metismenu-container.visible{
+                        padding-left: 8px;
+                        .active,.has-active-child{
+                            background: transparent !important;
+                            color: #ffb22b;
+                            box-shadow: none;
+                        }
+                    }
+                }
+        }
+        .pro-sidebar{
+            color:#607d8b;
+            font-weight: 300;
+            font-size: 15px ;
+            width: 240px;
+            min-width: 240px;
+            .pro-sidebar-inner{
+                background-color: #fff;
+            }
+
+            .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item{
+                background-color: #fff;
+            }
+          .pro-menu .pro-menu-item.pro-sub-menu .pro-inner-list-item .pro-inner-item:before{
+              display: none;
+          }
+        }
+        width: 100%;
+        overflow: hidden;
         .text-themecolor{
             color: $primaryColor;
         }
         .card{
+            h2{
+                font-size: 21px;
+                color: #455a64;
+            }
             border-color: #d7dfe3;
             box-shadow: 0px 5px 20px #e2e2e2;
             .card-footer{
@@ -68,7 +184,7 @@ body {
             background-color: #f6f4f2;
             padding-top: 47px;
             z-index: 20;
-            padding-left: 25px;
+            padding-left: 0;
             padding-right: 25px;
             box-shadow: 1px 0px 20px  #f6f4f2;
             background: #fff;
@@ -213,6 +329,23 @@ body {
                         @include noBorder;
                         &::-webkit-inner-spin-button {
                             opacity: 1;
+                        }
+                    }
+                }
+                .main-table-wrap.inner-table-wrap{
+                    .table{
+                        tr{
+                            th{
+                                border:none;
+                                color: #67757c;
+                                padding-top: 30px;
+                                font-weight: 500;
+                            }
+                            td{
+                                border-color: #f3f1f1;
+                                color: #67757c;
+                                font-weight: 400;
+                            }
                         }
                     }
                 }
