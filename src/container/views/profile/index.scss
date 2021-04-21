@@ -1,0 +1,35 @@
+.profile--holder{
+    .card-header {
+        background-color: #fff;
+        h3{font-size: 21px; font-weight: 500;}
+    }
+    .card{
+        .card-body{
+            .btn-default{
+                background: #d9d9d9;
+                border: none;
+                font-size: 15px;
+                margin-top: 5px;
+            }
+            .btn-primary{
+                border: none;
+                font-size: 15px;
+                color: #fff;
+                margin-top: 5px;
+            }
+            .form-control{
+                border: none;
+                border-bottom: 1px solid #d9d9d9;
+                border-radius: 0;
+                padding-left: 0;
+                &:hover,
+                &:focus{
+                    outline: none;
+                    box-shadow: none;
+                    border-bottom: 1px solid #009efb;
+                }
+            }
+            .search-field{font-size: 14px !important;}
+        }
+    }
+}

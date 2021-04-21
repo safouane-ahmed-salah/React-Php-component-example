@@ -1,5 +1,5 @@
 import  React  from "react";
-import {  Route } from 'react-router-dom';
+import {  Link, Route } from 'react-router-dom';
 import  Navbar  from "react-bootstrap/Navbar";
 import  Nav  from "react-bootstrap/Nav";
 import  NavDropdown   from "react-bootstrap/NavDropdown";
@@ -49,7 +49,9 @@ export function AppBar(){
             <NavDropdown title="F" className='header--dropdown' menuAlign="right" id="basic-nav-dropdown">
             <NavDropdown.Item href="#">Farhat</NavDropdown.Item>
             <NavDropdown.Item href="#">Farhatbaig77@gmail.com</NavDropdown.Item>
-            <NavDropdown.Item href="#"><Button type='primary' size='sm'>View Profile</Button></NavDropdown.Item>
+            <NavDropdown.Item href="#"><Button type='primary' size='sm'> 
+            <Link to='/profile'> View Profile </Link>
+            </Button></NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#">My Profile</NavDropdown.Item>
             <NavDropdown.Item href="#">Logout</NavDropdown.Item>

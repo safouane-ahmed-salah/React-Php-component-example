@@ -6,6 +6,7 @@ import { Campaign } from './views/Campaign';
 import { Device } from './views/Device';
 import { EnquiryDashBoard } from './views/EnquiryDashboard';
 import { Locations } from './views/Locations';
+import { Profile } from './views/profile';
 import { Source } from './views/Source';
 import { Status } from './views/Status';
 
@@ -18,6 +19,8 @@ export const routes =
     {path: '/source', exact:true, component: Source  },
     {path: '/location', exact:true, component: Locations  },
     {path: '/device', exact:true, component: Device  },
+    {path: '/profile', exact:true, component: Profile  },
+
 
 ];
 
