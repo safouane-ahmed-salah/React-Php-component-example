@@ -6,7 +6,7 @@ use React\Component;
 class Header extends Component{
     function render(){
         return new div([
-            new div('PHP-REACT', ['class'=> 'pe-4 font-weight-bold']), 
+            new div( new a('PHP-REACT', ['href'=> '/', 'class'=> 'navbar-brand']), ['class'=> 'pe-4 font-weight-bold']), 
             new ul([
                 new RouteLink('Page 1', ['to'=> '/page1']),
                 new RouteLink('Page 2', ['to'=> '/page2']),
@@ -20,6 +20,7 @@ class Header extends Component{
 class Content extends Component{
     function render(){
         return new div([
+            new Route(new Home, ['path'=> '/', 'exact' => true]),
             new Route(new Page1, ['path'=> '/page1', 'exact' => true]),
             new Route(new Page2, ['path'=> '/page2', 'exact' => true]),
             new Route(new Page3, ['path'=> '/page3/:id']),

@@ -53,6 +53,9 @@ abstract class Component{
         $attr = []; 
         foreach($this->props as $k=> $v){ $attr[] = $k.'="'.htmlspecialchars($v).'"'; }
         $attributes = implode(' ',$attr);
+
+        //escape html to be passed as string
+        $children = array_map(function($v){ return is_string($v) ? htmlspecialchars($v) : $v; }, $this->children);
         $children = implode('', $this->children);
 
         return "<$tag $attributes>$children</$tag>";

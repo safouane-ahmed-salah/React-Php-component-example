@@ -25,24 +25,24 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => 'dev-dev-farhat',
-    'version' => 'dev-dev-farhat',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => '545382b29301f3362d6f0add268c69e3066ab61a',
+    'reference' => 'c8fea98a9a0039c7ee3db2ac40ce39c61ce2fb40',
     'name' => '__root__',
   ),
   'versions' => 
   array (
     '__root__' => 
     array (
-      'pretty_version' => 'dev-dev-farhat',
-      'version' => 'dev-dev-farhat',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => '545382b29301f3362d6f0add268c69e3066ab61a',
+      'reference' => 'c8fea98a9a0039c7ee3db2ac40ce39c61ce2fb40',
     ),
     'phpreact/component' => 
     array (

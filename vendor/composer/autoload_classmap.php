@@ -11,6 +11,7 @@ return array(
     'React\\Tag\\Card' => $baseDir . '/src/views/page1.php',
     'React\\Tag\\Content' => $baseDir . '/src/components.php',
     'React\\Tag\\Header' => $baseDir . '/src/components.php',
+    'React\\Tag\\Home' => $baseDir . '/src/views/home.php',
     'React\\Tag\\Page1' => $baseDir . '/src/views/page1.php',
     'React\\Tag\\Page2' => $baseDir . '/src/views/page2.php',
     'React\\Tag\\Page3' => $baseDir . '/src/views/page3.php',

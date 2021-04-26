@@ -4,7 +4,7 @@ namespace React\Tag;
 use React\Component;
 
 class Route extends Component{
-    static $basePath = '/react';
+    static $basePath = '';
     
     protected function isActive($path){
         $request_uri = $_SERVER['REQUEST_URI'];
