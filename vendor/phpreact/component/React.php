@@ -11,7 +11,7 @@ abstract class Component{
     private static $hasNoChild = ['img', 'link', 'input', 'meta']; //tags that have no children 
     private const tagNameSpace= 'React\Tag'; //name space for the tags
     
-    private static $counter = 1; // couter for generating sequencial id
+    private static $counter = 1; // counter for generating sequencial id
     protected $id = ''; //the current id of the component
     protected $state = []; //the current state
     private static $states = []; //used to save all states of every component in the page
@@ -90,14 +90,15 @@ abstract class Component{
                 $innerHtml = $v; continue;
             } 
             $att = preg_replace('/[^\w-]/','', $k); //allow only [words or dash]
-            $val = htmlspecialchars($v); //escape html
+            $val = htmlspecialchars((string)$v); //escape html
 
-            $attr[] = "$att='$v'"; 
+            $attr[] = "$att='$val'"; 
         }
         $attributes = implode(' ',$attr);
 
         //if theres innerHtml then ignore children else escape any string passed as html 
-        $children = $innerHtml ? [$innerHtml] : array_map(function($v){ return is_string($v) ? htmlspecialchars($v) : $v; }, $this->children);
+        $children = $innerHtml ? [$innerHtml] : 
+            array_map(function($v)use($tag){ return is_string($v) && $tag!='script' ? htmlspecialchars($v) : $v; }, $this->children);
         $children = implode('', $children);
 
         return "<$tag $attributes>$children</$tag>";
