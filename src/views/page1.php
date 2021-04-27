@@ -24,7 +24,7 @@ class Card extends Component{
             new div("counter: $counter", ['class'=> 'card-body']),
             new div([
                 new button('update state', [
-                    'onclick'=> 'phpReact.setState(this.getAttribute("stateid"), prevState => ({counter: prevState.counter + 1}))',
+                    'onclick'=> 'this.disabled=true; phpReact.setState(this.getAttribute("stateid"), prevState => ({counter: prevState.counter + 1}),()=> this.disabled=false)',
                     'class' => 'm-auto btn btn-primary',
                     'stateid' => $this->id,
                 ]),
