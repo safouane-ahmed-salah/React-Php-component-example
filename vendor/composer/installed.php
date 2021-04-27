@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'c8fea98a9a0039c7ee3db2ac40ce39c61ce2fb40',
+    'reference' => 'abe8b6321d2d0a2e2708fc5503f5d55005ef2718',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'c8fea98a9a0039c7ee3db2ac40ce39c61ce2fb40',
+      'reference' => 'abe8b6321d2d0a2e2708fc5503f5d55005ef2718',
     ),
     'phpreact/component' => 
     array (

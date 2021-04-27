@@ -9,9 +9,7 @@ class Home extends Component{
     private function renderCard($file){
         return new div([
             new div($file, ['class'=> 'card-header']),
-            new div(
-                new div(highlight_string(file_get_contents(__DIR__."/../$file"), true), ['class'=> 'bg-light p-3 rounded overflow-auto']), 
-            ['class'=> 'card-body p-0 overflow-auto']),
+            new div(new CodeWrap(['file'=> __DIR__."/../$file"]),['class'=> 'card-body p-0 overflow-auto']),
         ], ['class'=> 'card']);
     }
 

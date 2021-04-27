@@ -9,7 +9,7 @@ class Page1 extends Component{
         return [
             new h1('Page 1'),
             new div(array_map(function(){  return new div(new Card, ['class' => 'col-md-2 my-2']);}, range(0, 11)), ['class'=> 'row']), 
-            new div(highlight_string(file_get_contents(__FILE__), true), ['class'=> 'bg-light rounded p-4 mt-5']),
+            new CodeWrap(['file'=> __FILE__]),
         ];
     }
 }
