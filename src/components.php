@@ -3,28 +3,6 @@ namespace React\Tag;
 
 use React\Component;
 
-
-class CodeWrap extends Component{
-    function __construct($props){
-        self::setHasNoChild($this->getTagName()); //does not accept children
-        parent::__construct($props);
-    }
-    /*
-        another way
-        function __construct($props){
-            parent::__construct(null, $props);
-        }
-    */
-
-
-    function render(){
-        return new div([
-            new h4('This is the code of the page', ['class'=> 'my-3 border-bottom']),
-            new div(null, ['class'=> 'bg-light rounded p-4','dangerouslyInnerHTML'=> highlight_string(file_get_contents($this->props->file), true)]),
-        ]);
-    }
-}
-
 class Head extends Component{
     function render(){
         return [
@@ -32,12 +10,6 @@ class Head extends Component{
             new title('PHP-REACT SAMPLE'),
             new link(['href'=> 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css', 'rel'=> 'stylesheet']),
         ];
-    }
-}
-
-class Footer extends Component{
-    function render(){
-        return new script(null,['src'=> 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js']);
     }
 }
 
@@ -63,5 +35,33 @@ class Content extends Component{
             new Route(new Page2, ['path'=> '/page2', 'exact' => true]),
             new Route(new Page3, ['path'=> '/page3/:id']),
         ], ['class'=> 'container py-2']);
+    }
+}
+
+class Footer extends Component{
+    function render(){
+        return new script(null,['src'=> 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js']);
+    }
+}
+
+//custom component to render php file content
+class CodeWrap extends Component{
+    function __construct($props){
+        self::setHasNoChild($this->getTagName()); //does not accept children
+        parent::__construct($props);
+    }
+    /*
+        another way
+        function __construct($props){
+            parent::__construct(null, $props);
+        }
+    */
+
+
+    function render(){
+        return new div([
+            new h4('This is the code of the page', ['class'=> 'my-3 border-bottom']),
+            new div(null, ['class'=> 'bg-light rounded p-4','dangerouslyInnerHTML'=> highlight_string(file_get_contents($this->props->file), true)]),
+        ]);
     }
 }
