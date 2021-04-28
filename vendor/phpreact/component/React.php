@@ -2,6 +2,31 @@
 
 namespace React;
 
+## ---old way of state management
+// const phpReact = {setState: function(id,state, onUpdate){ 
+//     var comp = document.getElementById(id); if(!comp) return;
+//     var prevState = this.getState(id); 
+//     if(typeof state === "function") state = state(prevState);
+//     var xhttp = new XMLHttpRequest();
+//     var params = {id,state};
+//     xhttp.onreadystatechange = function() {
+//         if (this.readyState == 4 && this.status == 200) {
+//             comp.outerHTML = this.responseText;
+//             if(typeof onUpdate === "function") onUpdate();
+//         }
+//     };
+//     xhttp.open("POST", location.href, true);
+//     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//     xhttp.send("phpreact="+ JSON.stringify({id,state,prevState}));
+// },
+// getState: function(id){ 
+//     try{
+//         var comp = document.getElementById(id); 
+//         return JSON.parse(comp.getAttribute("prevstate")); 
+//     }catch(e){ return {} }
+// }
+// }
+
 abstract class Component{
     private static $isTagsSet = false; //flag to track if all html tag classes created
 
@@ -14,7 +39,6 @@ abstract class Component{
     private static $counter = 1; // counter for generating sequencial id
     protected $id = ''; //the current id of the component
     protected $state = []; //the current state
-    private static $states = []; //used to save all states of every component in the page
 
     /*
         run the first time when first component called 
@@ -30,7 +54,53 @@ abstract class Component{
         self::$isTagsSet = true;
 
         //script tag to setup setState function
-        echo new \React\Tag\script('const phpReact={setState:function(t,e,n){var a=document.getElementById(t);if(a){var r=this.getState(t);"function"==typeof e&&(e=e(r));var o=new XMLHttpRequest;o.onreadystatechange=function(){4==this.readyState&&200==this.status&&(a.outerHTML=this.responseText,"function"==typeof n&&n())},o.open("POST",location.href,!0),o.setRequestHeader("Content-type","application/x-www-form-urlencoded"),o.send("phpreact="+JSON.stringify({id:t,state:e,prevState:r}))}},getState:function(t){try{var e=document.getElementById(t);return JSON.parse(e.getAttribute("prevstate"))}catch(t){return{}}}};');
+        echo new \React\Tag\script('!function(w, d){ 
+            var setdoms = function(){ 
+                d.querySelectorAll("[component-id] *:not([component-id])").forEach(function(node){
+                    if(node.setState) return;
+                    node.getState = getState;
+                    node.setState = setState;
+                }); 
+            },
+            setState = function(state, onUpdate){ 
+                var comp = this.closest("[component-id]"); if(!comp) return;
+                var id = comp.getAttribute("component-id");
+                var key = this.getAttribute("key");
+                var val = this.value;
+                var prevState = this.getState(); 
+                if(typeof state === "function") state = state(prevState);
+                var xhttp = new XMLHttpRequest();
+                var params = {id,state, prevState};
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        comp.outerHTML = this.responseText;
+                        if(key){
+                            var newThis = d.querySelector("[component-id=\'"+ id +"\'] [key=\'"+ key +"\']");
+                            if(newThis){ 
+                                newThis.focus();
+                                if(val){
+                                    newThis.value = ""; 
+                                    newThis.value = val;
+                                }
+                            }
+                        }
+                        if(typeof onUpdate === "function") onUpdate();
+                        setdoms();
+                    }
+                };
+                xhttp.open("POST", location.href, true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("phpreact="+ JSON.stringify(params));
+            }, 
+            getState = function(){
+                try{ 
+                    var comp = this.closest("[component-id]"); 
+                    return JSON.parse(comp.getAttribute("component-state")); 
+                }catch(e){ return {} }
+            };
+
+            w.addEventListener("load", setdoms); 
+        }(window, document)');
     }
     
     /*
@@ -60,7 +130,7 @@ abstract class Component{
         @param: $hasNoChild: bool if the tags accept no children    
     */
     static function registerTag($tags, $hasNoChild = false){
-        self::$htmlTags= array_unique(array_merge(self::$htmlTags, (array)$tags));
+        self::$htmlTags= array_unique(array_merge(self::$htmlTags, self::parseTags($tags)));
         if($hasNoChild) $this->setHasNoChild($tags); 
     }
 
@@ -69,7 +139,24 @@ abstract class Component{
         @param: $tag: string|array[list of string] html tags   
     */
     static function setHasNoChild($tags){
-        self::$hasNoChild= array_unique(array_merge(self::$hasNoChild, (array)$tags));
+        self::$hasNoChild= array_unique(array_merge(self::$hasNoChild, self::parseTags($tags)));
+    }
+
+    /* 
+        @param: $tags: string|array -- array string to be parse
+        @return: parsed array string
+    */
+    private static function parseTags($tags){
+        return array_map(function($tag){ return self::parseAttribute($tag); }, (array)$tags);
+    }
+
+    /* 
+        allow only [words or dash] for attribute or tag
+        @param: $attr: string -- the string to be parse
+        @return: parsed string
+    */
+    private static function parseAttribute($attr){
+        return preg_replace('/[^\w-]/','', $attr); //allow only [words or dash]
     }
 
     /*
@@ -77,10 +164,6 @@ abstract class Component{
     */
     function render(){
         if(!$this->isHtmlTage()) return '';
-        
-        //save states in dom attribute [prevstate]
-        if($this->props->id && self::$states[$this->props->id]) 
-            $this->props->prevstate = json_encode(self::$states[$this->props->id]);
 
         $tag = $this->getTagName();
         $innerHtml = '';
@@ -89,11 +172,12 @@ abstract class Component{
             if($k == 'dangerouslyInnerHTML'){ //if has dangerouslyInnerHTML attribute
                 $innerHtml = $v; continue;
             } 
-            $att = preg_replace('/[^\w-]/','', $k); //allow only [words or dash]
-            $val = htmlspecialchars((string)$v); //escape html
+            $att = self::parseAttribute($k); //allow only [words or dash]
+            $val = htmlspecialchars( is_object($v) || is_array($v) ? json_encode($v) : $v); //escape html
 
             $attr[] = "$att='$val'"; 
         }
+
         $attributes = implode(' ',$attr);
 
         //if theres innerHtml then ignore children else escape any string passed as html 
@@ -110,6 +194,12 @@ abstract class Component{
     */
     function __toString(){
         $components = $this->render();
+
+        //save state of custom component in top html wrapper
+        if(!$this->isHtmlTage() && $components instanceof Component && $components->isHtmlTage()){
+            $components->props = (object)array_merge((array)$components->props, ['component-id'=> $this->id, 'component-state'=> $this->state]);
+        }
+
         if(!is_array($components)) $components = [$components]; //must be list of components
 
         //if custom component the render should return component or list of components
@@ -155,7 +245,6 @@ abstract class Component{
     private function setId(){
         if($this->isHtmlTage()) return;
         $this->id = md5(self::$counter); //generate id
-        self::$states[$this->id] = $this->state; //save all states by id
         self::$counter++;
     }
 
@@ -169,7 +258,6 @@ abstract class Component{
         if(!$post || $post->id != $this->id) return;
         $oldState = $post->prevState;
         $this->state = (object)array_merge((array)$oldState, (array)$post->state);
-        self::$states[$this->id] = $this->state;
         $this->componentDidUpdate($oldState, $this->state); 
         @ob_end_clean();
         die($this);

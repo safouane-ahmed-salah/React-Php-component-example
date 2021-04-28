@@ -21,14 +21,13 @@ class Card extends Component{
         $counter = $this->state->counter;
 
         return new div([
-            new div("counter: $counter", ['class'=> 'card-body']),
             new div([
-                new button('update state', [
-                    'onclick'=> 'this.disabled=true; phpReact.setState(this.getAttribute("stateid"), prevState => ({counter: prevState.counter + 1}),()=> this.disabled=false)',
-                    'class' => 'm-auto btn btn-primary',
-                    'stateid' => $this->id,
-                ]),
+                "counter: $counter",
+                new input(['value'=> $counter,'onkeyup'=> 'this.setState({counter: parseInt(this.value)})', 'key'=>'12', 'type'=> 'number']),
+            ], ['class'=> 'card-body']),
+            new div([
+                new button('update state', ['onclick'=> 'this.setState(prevState=>({counter: prevState.counter + 1}))', 'class' => 'm-auto btn btn-primary']),
             ], ['class'=> 'card-footer'])
-        ], ['class'=> 'card', 'id'=> $this->id]);
+        ], ['class'=> 'card']);
     }
 }
