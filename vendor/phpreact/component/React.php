@@ -31,7 +31,7 @@ abstract class Component{
     private static $isTagsSet = false; //flag to track if all html tag classes created
 
     //all html tags that are allowed
-    private static $htmlTags = ['div','p','img','a','ul','li', 'h1','h2','h3','h4','h5','h6','iframe','article', 'form','input','textarea','select','option', 'link', 'script', 'button', 'nav', 'title', 'meta', 'code', 'pre'];
+    private static $htmlTags = ['div','p','img','a','ul','li', 'h1','h2','h3','h4','h5','h6','iframe','article', 'form','input','textarea','select','option', 'link', 'script', 'button', 'nav', 'title', 'meta', 'code', 'pre', 'span', 'i'];
     
     private static $hasNoChild = ['img', 'link', 'input', 'meta']; //tags that have no children 
     private const tagNameSpace= 'React\Tag'; //name space for the tags
@@ -66,6 +66,7 @@ abstract class Component{
                 var comp = this.closest("[component-id]"); if(!comp) return;
                 var id = comp.getAttribute("component-id");
                 var key = this.getAttribute("key");
+                var isFocused = document.activeElement === this;
                 var val = this.value;
                 var prevState = this.getState(); 
                 if(typeof state === "function") state = state(prevState);
@@ -74,7 +75,7 @@ abstract class Component{
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         comp.outerHTML = this.responseText;
-                        if(key){
+                        if(isFocused && key){
                             var newThis = d.querySelector("[component-id=\'"+ id +"\'] [key=\'"+ key +"\']");
                             if(newThis){ 
                                 newThis.focus();

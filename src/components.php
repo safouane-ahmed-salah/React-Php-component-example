@@ -18,7 +18,10 @@ class CodeWrap extends Component{
 
 
     function render(){
-        return new div(null, ['class'=> 'bg-light rounded p-4','dangerouslyInnerHTML'=> highlight_string(file_get_contents($this->props->file), true)]);
+        return new div([
+            new h4('This is the code of the page', ['class'=> 'my-3 border-bottom']),
+            new div(null, ['class'=> 'bg-light rounded p-4','dangerouslyInnerHTML'=> highlight_string(file_get_contents($this->props->file), true)]),
+        ]);
     }
 }
 

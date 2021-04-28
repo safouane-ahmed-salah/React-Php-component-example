@@ -23,7 +23,10 @@ class Card extends Component{
         return new div([
             new div([
                 "counter: $counter",
-                new input(['value'=> $counter,'onkeyup'=> 'this.setState({counter: parseInt(this.value)})', 'key'=>'12', 'type'=> 'number']),
+                new div([
+                    'keep focus on input keyup therefor, we need key prop',
+                    new input(['value'=> $counter,'onkeyup'=> 'this.setState({counter: parseInt(this.value)})', 'key'=>'12', 'type'=> 'number']),
+                ], ['class'=> 'py-2', 'style'=> 'font-size:12px;color:orange'])
             ], ['class'=> 'card-body']),
             new div([
                 new button('update state', ['onclick'=> 'this.setState(prevState=>({counter: prevState.counter + 1}))', 'class' => 'm-auto btn btn-primary']),

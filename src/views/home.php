@@ -15,7 +15,9 @@ class Home extends Component{
 
     function render(){
         return [
-            new h1('Home Page'),
+            new h1('PHP-REACT frameword Page'),
+            new div('This framework is aiming to mimic reactjs component way of rendering html'),
+            new div('check the code of the site bellow every page', ['class'=> 'mb-2']),
             new div(
                 array_map(function($v){ return new div($this->renderCard("$v.php"), ['class'=> 'col-md-6']); }, ['app', 'components']),
             ['class'=> 'row']),
