@@ -18,10 +18,14 @@ class Home extends Component{
             new h1('PHP-REACT frameword Page'),
             new div('This framework is aiming to mimic reactjs component way of rendering html'),
             new div([
-                'view documentation in ',
+                'View documentation in ',
                 new a('this link', ['href'=> 'https://github.com/safwan39/PHP-React-Component/wiki']),
-            ]),
-            new small('Note: the code of that construct this site is bellow every page', ['class'=> 'mb-2 text-muted text-small']),
+            ], ['class'=> 'mb-1']),
+            new div([
+                'Find the code of the site ',
+                new a('here', ['href'=> 'https://github.com/safwan39/React-Php-component-example']),
+            ],['class'=> 'mb-1']),
+            new small('Note: bellow every page there\'s the code that constructs it', ['class'=> 'mb-2 text-muted text-small']),
             new div(
                 array_map(function($v){ return new div($this->renderCard("$v.php"), ['class'=> 'col-md-6']); }, ['app', 'components']),
             ['class'=> 'row']),
