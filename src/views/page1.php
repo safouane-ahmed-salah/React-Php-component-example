@@ -8,6 +8,7 @@ class Page1 extends Component{
     function render(){
         return [
             new h1('Page 1'),
+            new div('state management example: (nested components)', ['class'=> 'h4 border-bottom']),
             new div(array_map(function(){  return new div(new Card, ['class' => 'col-md-2 my-2']);}, range(0, 11)), ['class'=> 'row']), 
             new CodeWrap(['file'=> __FILE__]),
         ];
@@ -29,6 +30,7 @@ class Card extends Component{
                 ], ['class'=> 'py-2', 'style'=> 'font-size:12px;color:orange'])
             ], ['class'=> 'card-body']),
             new InnerCard,
+            new InnerCard,
             new div([
                 new button('Increment state counter', [
                     'onclick'=> 'this.setState(prevState=>({counter: prevState.counter + 1}))', 
@@ -44,8 +46,20 @@ class InnerCard extends Component{
     var $state = ['value'=> 10];
 
     function render(){
-        return new div(
-            new button($this->state->value, ['onclick'=> 'this.setState(prev => ({value: prev.value + 3}))', 'class'=> 'btn btn-secondary btn-block'])
-        );
+        return new div([
+            new div('2nd level component'),
+            new button($this->state->value, ['onclick'=> 'this.setState(prev => ({value: prev.value + 3}))', 'class'=> 'btn btn-secondary btn-block']),
+            new DeeperCard,
+        ], ['class'=> 'border p-2 m-1']);
+    }
+}
+class DeeperCard extends Component{ 
+    var $state = ['value'=> 1];
+
+    function render(){
+        return new div([
+            new div('3rd level component'),
+            new button($this->state->value, ['onclick'=> 'this.setState(prev => ({value: prev.value + 2}))', 'class'=> 'btn btn-warning btn-block'])
+        ], ['class'=> 'border p-2 m-1']);
     }
 }

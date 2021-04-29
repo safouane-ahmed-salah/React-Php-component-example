@@ -13,6 +13,7 @@ class ComposerStaticInit43873de84ef179b20ea201d506e3d61d
         'React\\Tag\\Card' => __DIR__ . '/../..' . '/src/views/page1.php',
         'React\\Tag\\CodeWrap' => __DIR__ . '/../..' . '/src/components.php',
         'React\\Tag\\Content' => __DIR__ . '/../..' . '/src/components.php',
+        'React\\Tag\\DeeperCard' => __DIR__ . '/../..' . '/src/views/page1.php',
         'React\\Tag\\Footer' => __DIR__ . '/../..' . '/src/components.php',
         'React\\Tag\\Head' => __DIR__ . '/../..' . '/src/components.php',
         'React\\Tag\\Header' => __DIR__ . '/../..' . '/src/components.php',

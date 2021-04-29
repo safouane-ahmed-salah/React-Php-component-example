@@ -6,7 +6,7 @@ abstract class Component{
     private static $isTagsSet = false; //flag to track if all html tag classes created
 
     //all html tags that are allowed
-    private static $htmlTags = ['div','p','img','a','ul','li', 'h1','h2','h3','h4','h5','h6','iframe','article', 'form','input','textarea','select','option', 'link', 'script', 'button', 'nav', 'title', 'meta', 'code', 'pre', 'span', 'i', 'svg', 'path', 'circle', 'g'];
+    private static $htmlTags = ['div','p','img','small', 'a','ul','li', 'h1','h2','h3','h4','h5','h6','iframe','article', 'form','input','textarea','select','option', 'link', 'script', 'button', 'nav', 'title', 'meta', 'code', 'pre', 'span', 'i', 'svg', 'path', 'circle', 'g'];
     
     private static $hasNoChild = ['img', 'link', 'input', 'meta']; //tags that have no children 
     private const tagNameSpace= 'React\Tag'; //name space for the tags

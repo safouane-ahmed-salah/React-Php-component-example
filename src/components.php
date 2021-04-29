@@ -9,6 +9,7 @@ class Head extends Component{
             new meta(['name'=> 'viewport', 'content'=> "width=device-width, initial-scale=1"]),
             new title('PHP-REACT SAMPLE'),
             new link(['href'=> 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css', 'rel'=> 'stylesheet']),
+            new link(['href'=> '/style.css', 'rel'=> 'stylesheet']),
         ];
     }
 }
@@ -16,7 +17,17 @@ class Head extends Component{
 class Header extends Component{
     function render(){
         return new div([
-            new div( new a('PHP-REACT', ['href'=> '/', 'class'=> 'navbar-brand']), ['class'=> 'pe-4 font-weight-bold']), 
+            new div( new a([
+                new span('P'),
+                new span('H'),
+                new span('P'),
+                new span('-'),
+                new span('R'),
+                new span('E'),
+                new span('A'),
+                new span('C'),
+                new span('T'),
+                ], ['href'=> '/', 'class'=> 'navbar-brand']), ['class'=> 'pe-4 font-weight-bold']), 
             new ul([
                 new RouteLink('Page 1', ['to'=> '/page1']),
                 new RouteLink('Page 2', ['to'=> '/page2']),

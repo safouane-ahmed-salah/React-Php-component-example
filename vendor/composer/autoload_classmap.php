@@ -12,6 +12,7 @@ return array(
     'React\\Tag\\Card' => $baseDir . '/src/views/page1.php',
     'React\\Tag\\CodeWrap' => $baseDir . '/src/components.php',
     'React\\Tag\\Content' => $baseDir . '/src/components.php',
+    'React\\Tag\\DeeperCard' => $baseDir . '/src/views/page1.php',
     'React\\Tag\\Footer' => $baseDir . '/src/components.php',
     'React\\Tag\\Head' => $baseDir . '/src/components.php',
     'React\\Tag\\Header' => $baseDir . '/src/components.php',
