@@ -19,7 +19,7 @@ class Home extends Component{
             new div('This framework is aiming to mimic reactjs component way of rendering html'),
             new div([
                 'view documentation in ',
-                new a('this link', ['href'=> 'https://github.com/safwan39/PHP-React-Component/wiki/Custom-Component']),
+                new a('this link', ['href'=> 'https://github.com/safwan39/PHP-React-Component/wiki']),
             ]),
             new small('Note: the code of that construct this site is bellow every page', ['class'=> 'mb-2 text-muted text-small']),
             new div(
