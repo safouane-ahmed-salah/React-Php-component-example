@@ -4,53 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3668179ef03b646340ac6830d623a836",
-    "packages": [
-        {
-            "name": "phpreact/component",
-            "version": "v1.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/safwan39/PHP-React-Component.git",
-                "reference": "22a37bd5bd0ebb5e5dbc228f6c8843beeb8e6143"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/safwan39/PHP-React-Component/zipball/22a37bd5bd0ebb5e5dbc228f6c8843beeb8e6143",
-                "reference": "22a37bd5bd0ebb5e5dbc228f6c8843beeb8e6143",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "React.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Safouane Ahmed Salah",
-                    "email": "safoa14@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "create web app via php react like component based",
-            "homepage": "https://github.com/safwan39/PHP-React-Component",
-            "keywords": [
-                "component",
-                "php",
-                "react"
-            ],
-            "support": {
-                "issues": "https://github.com/safwan39/PHP-React-Component/issues",
-                "source": "https://github.com/safwan39/PHP-React-Component/tree/v1.2.3"
-            },
-            "time": "2021-04-25T12:18:12+00:00"
-        }
-    ],
+    "content-hash": "d751713988987e9331980363e24189ce",
+    "packages": [],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",

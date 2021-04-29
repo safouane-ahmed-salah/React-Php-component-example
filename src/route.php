@@ -5,6 +5,7 @@ use React\Component;
 
 class Route extends Component{
     static $basePath = '';
+    protected $props = ['exact'=> false, 'path'=> '']; //default props
     
     protected function isActive($path){
         $request_uri = $_SERVER['REQUEST_URI'];

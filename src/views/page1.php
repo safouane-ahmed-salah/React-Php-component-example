@@ -28,6 +28,7 @@ class Card extends Component{
                     new input(['value'=> $counter,'onkeyup'=> 'this.setState({counter: parseInt(this.value)})', 'key'=>'12', 'type'=> 'number']),
                 ], ['class'=> 'py-2', 'style'=> 'font-size:12px;color:orange'])
             ], ['class'=> 'card-body']),
+            new InnerCard,
             new div([
                 new button('Increment state counter', [
                     'onclick'=> 'this.setState(prevState=>({counter: prevState.counter + 1}))', 
@@ -36,5 +37,15 @@ class Card extends Component{
                 ]),
             ], ['class'=> 'card-footer'])
         ], ['class'=> 'card']);
+    }
+}
+
+class InnerCard extends Component{ 
+    var $state = ['value'=> 10];
+
+    function render(){
+        return new div(
+            new button($this->state->value, ['onclick'=> 'this.setState(prev => ({value: prev.value + 3}))', 'class'=> 'btn btn-secondary btn-block'])
+        );
     }
 }
