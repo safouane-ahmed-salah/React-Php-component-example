@@ -8,7 +8,34 @@ class Page2 extends Component{
     function render(){
         return [
             new h1('Page 2'),
+            new div('Wizard Example', ['class'=> 'border-bottom mb-3']),
+            new div(
+                array_map(function(){ return  new div(new ListItems,['class'=> 'col-md-3']); }, range(0,3))
+            ,['class'=> 'row']),
             new CodeWrap(['file'=> __FILE__]),
         ];
     }
+}
+
+class ListItems extends Component{
+    var $list = [
+        ['hi', 'you', 'here', 'try'],
+        ['wizard', 'fpr', 'everyone', 'match'],
+        ['trial', 'bootstrap', 'card', 'footbal'],
+    ];
+    protected $state = ['stage'=>  0];
+    
+    function render(){
+        $stage = $this->state->stage;
+        $list = $this->list[$stage] ?? [];
+
+        return new div([
+            new div(new ul(array_map(function($v){ return new li($v); }, $list)), ['class'=> 'card-body']),
+            new div([
+                $stage> 0 ? new button('Back', ['class'=> 'btn btn-secondary btn-sm', 'onclick'=> 'this.setState(prev => ({stage: prev.stage - 1}))']) : null,
+                $stage< count($this->list)-1 ? new button('Next', ['class'=> 'btn btn-primary btn-sm ms-2', 'onclick'=> 'this.setState(prev => ({stage: prev.stage + 1}))']) : null,
+            ], ['class'=> 'card-footer d-flex justify-content-end']),
+        ], ['class'=> 'card']);
+    }
+
 }
