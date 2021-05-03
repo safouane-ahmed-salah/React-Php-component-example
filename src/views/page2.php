@@ -12,10 +12,27 @@ class Page2 extends Component{
             new div(
                 array_map(function(){ return  new div(new ListItems,['class'=> 'col-md-3']); }, range(0,3))
             ,['class'=> 'row']),
+            new ItemWrapper,
             new CodeWrap(['file'=> __FILE__]),
         ];
     }
 }
+
+
+class ItemWrapper extends Component{    
+    protected $state = ['component'=>  0];
+    
+    function render(){
+        $component = $this->state->component;
+
+        return new div([
+         new div(array_map(function(){ return new ListItems; }, range(0,$component))),
+         new button('Add Component', ['onclick'=> 'this.setState(prev=> ({component: prev.component +1}))', 'class'=> 'btn btn-primary']),   
+        ], ['class'=> 'border-top mt-3']);
+    }
+
+}
+
 
 class ListItems extends Component{
     var $list = [
@@ -35,7 +52,7 @@ class ListItems extends Component{
                 $stage> 0 ? new button('Back', ['class'=> 'btn btn-secondary btn-sm', 'onclick'=> 'this.setState(prev => ({stage: prev.stage - 1}))']) : null,
                 $stage< count($this->list)-1 ? new button('Next', ['class'=> 'btn btn-primary btn-sm ms-2', 'onclick'=> 'this.setState(prev => ({stage: prev.stage + 1}))']) : null,
             ], ['class'=> 'card-footer d-flex justify-content-end']),
-        ], ['class'=> 'card']);
+        ], ['class'=> 'card my-2']);
     }
 
 }
